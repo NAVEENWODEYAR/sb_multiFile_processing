@@ -1,4 +1,4 @@
-package com.batch.MultiFile_Processing;
+package com.batch.MultiFile_Processing.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
