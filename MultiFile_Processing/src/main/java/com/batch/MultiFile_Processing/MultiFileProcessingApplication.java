@@ -10,7 +10,7 @@ public class MultiFileProcessingApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MultiFileProcessingApplication.class, args);
-		System.out.println("\n*******************\nFILE_PROCESSING");
+		System.out.println("\n*******************\nFILE_PROCESSING\n*******************");
 	}
 
 	 @Bean

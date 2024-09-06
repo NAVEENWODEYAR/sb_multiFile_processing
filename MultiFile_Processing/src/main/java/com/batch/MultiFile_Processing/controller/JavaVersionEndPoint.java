@@ -1,7 +1,9 @@
 package com.batch.MultiFile_Processing.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
@@ -9,12 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 06/09/2024
  */
 @RestController
-@RequestMapping("/java")
+@Endpoint(id = "java")
 public class JavaVersionEndPoint {
 	
-	@GetMapping
+	private static final Logger LOOGER = LoggerFactory.getLogger(JavaVersionEndPoint.class);
+	
+	@ReadOperation
 	public String getVersion() {
-		
+		LOOGER.info(getVersion());
 		return "JAVA VERSION: "+System.getProperty("java.version");
 	}
 
