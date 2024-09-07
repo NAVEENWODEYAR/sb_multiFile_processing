@@ -1,8 +1,14 @@
 package com.batch.MultiFile_Processing.batchConfig;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.batch.core.Step;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import com.batch.MultiFile_Processing.entity.VehicleDTO;
 
@@ -13,8 +19,19 @@ import com.batch.MultiFile_Processing.entity.VehicleDTO;
  */
 @Configuration
 public class ImportVehicleInvoices {
+	
+	private static final Logger log = LoggerFactory.getLogger(ImportVehicleInvoices.class);
 
-	public FlatFileItemReader<VehicleDTO> veFileItemReader(){
+	public Step importVehiclesStep(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager) {
+		return new StepBuilder("importVehicleStep",jobRepository)
+				.chunk(100,platformTransactionManager)
+				.reader(vehicleFileItemReader())
+				.processor(item->vehicleProcessor(item))
+				.writer(items->log.info("Writing items: {}",items))
+				.build();
+	}
+	
+	public FlatFileItemReader<VehicleDTO> vehicleFileItemReader(){
 		
 		return new FlatFileItemReaderBuilder<VehicleDTO>()
 				.name("vehicle item reader")
@@ -27,4 +44,10 @@ public class ImportVehicleInvoices {
 				.targetType(VehicleDTO.class)
 				.build();
 	}
+	
+	private static VehicleDTO vehicleProcessor(VehicleDTO item) {
+		log.info("Processing the item: {}",item);
+		return item;
+	}
+	
 }
