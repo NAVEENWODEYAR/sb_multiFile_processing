@@ -44,8 +44,8 @@ public class ImportVehicleInvoices {
 	}
 	
 	public FlatFileItemReader<VehicleDTO> vehicleFileItemReader(){
-		
 		return new FlatFileItemReaderBuilder<VehicleDTO>()
+				.resource(new ClassPathResource("/data/invoice.csv"))
 				.name("vehicle item reader")
 				.saveState(false)
 				.linesToSkip(1)
