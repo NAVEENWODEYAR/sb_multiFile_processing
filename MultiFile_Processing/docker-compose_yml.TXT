@@ -1,0 +1,10 @@
+
+
+services:
+  database:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: boss
+      MYSQL_DATABASE: vehicleDB

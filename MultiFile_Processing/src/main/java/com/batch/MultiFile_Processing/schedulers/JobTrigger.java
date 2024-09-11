@@ -25,10 +25,6 @@ import lombok.NoArgsConstructor;
  * @date 08-Sept-2024
  * @time 8:06:09 pm
  */
-@Configuration
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class JobTrigger {
 	
 	private final JobLauncher jobLauncher;
