@@ -3,8 +3,10 @@ package com.example.demo.config;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.JobBuilder;
+import org.springframework.batch.core.configuration.annotation.StepBuilder;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.data.RepositoryItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
@@ -20,13 +22,6 @@ import com.example.demo.entity.EmployeeData;
 import com.example.demo.processor.EmployeeProcessor;
 import com.example.demo.repository.EmployeeDataRepo;
 
-/**
- * Batch job configuration for reading from CSV and writing to the repository.
- * 
- * @author Naveen Wodeyar
- * @date 11-Sept-2024
- * @time 11:42:03 PM
- */
 @Configuration
 @EnableBatchProcessing
 public class CsvBatchConfig {
@@ -35,18 +30,17 @@ public class CsvBatchConfig {
     private EmployeeDataRepo employeeDataRepo;
 
     @Autowired
-    private StepBuilderFactory stepBuilderFactory;
+    private JobBuilder jobBuilder;
 
     @Autowired
-    private JobBuilderFactory jobBuilderFactory;
+    private StepBuilder stepBuilder;
 
-    // Create Reader
     @Bean
     public FlatFileItemReader<EmployeeData> flatFileItemReader() {
         FlatFileItemReader<EmployeeData> fileItemReader = new FlatFileItemReader<>();
-        fileItemReader.setResource(new ClassPathResource("data/EMPLOYEE.csv")); // Adjust path as needed
+        fileItemReader.setResource(new ClassPathResource("data/EMPLOYEE.csv"));
         fileItemReader.setName("csv-reader");
-        fileItemReader.setLinesToSkip(1);
+        fileItemReader.setLinesToSkip(1); // Skips header line if present
         fileItemReader.setLineMapper(lineMapper());
 
         return fileItemReader;
@@ -67,13 +61,11 @@ public class CsvBatchConfig {
         return defaultLineMapper;
     }
 
-    // Create Processor
     @Bean
     public EmployeeProcessor employeeProcessor() {
         return new EmployeeProcessor();
     }
 
-    // Create Writer
     @Bean
     public RepositoryItemWriter<EmployeeData> repositoryItemWriter() {
         RepositoryItemWriter<EmployeeData> repositoryItemWriter = new RepositoryItemWriter<>();
@@ -83,10 +75,9 @@ public class CsvBatchConfig {
         return repositoryItemWriter;
     }
 
-    // Create Step
     @Bean
     public Step step() {
-        return stepBuilderFactory.get("step-1")
+        return stepBuilder.get("step-1")
                 .<EmployeeData, EmployeeData>chunk(100)
                 .reader(flatFileItemReader())
                 .processor(employeeProcessor())
@@ -94,12 +85,10 @@ public class CsvBatchConfig {
                 .build();
     }
 
-    // Create Job
     @Bean
     public Job job() {
-        return jobBuilderFactory.get("employee-job")
-                .flow(step())
-                .end()
+        return jobBuilder.get("employee-job")
+                .start(step())
                 .build();
     }
 }
