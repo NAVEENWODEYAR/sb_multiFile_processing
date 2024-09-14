@@ -23,6 +23,7 @@ import org.springframework.jdbc.core.DataClassRowMapper;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.example.demo.dto.SalesDTO;
+import com.example.demo.listners.SalesWriterListners;
 import com.example.demo.processor.Saleprocessor;
 
 /**
@@ -49,6 +50,9 @@ public class EportSalesJobConfig {
 	
 	@Autowired
 	private Saleprocessor saleprocessor;
+	
+	@Autowired
+	private SalesWriterListners salesWriterListners;
 	
 	@Bean
 	public JdbcCursorItemReader<SalesDTO> salesJdbcCursorItemReader(){
@@ -87,6 +91,7 @@ public class EportSalesJobConfig {
 				.reader(salesJdbcCursorItemReader())
 				.processor(saleprocessor)
 				.writer(flatFileItemWriter)
+				.listener(salesWriterListners)
 				.build();
 				
 	}
