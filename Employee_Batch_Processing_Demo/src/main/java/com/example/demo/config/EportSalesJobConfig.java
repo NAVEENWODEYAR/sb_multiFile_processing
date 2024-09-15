@@ -24,7 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import com.example.demo.dto.SalesDTO;
 import com.example.demo.listners.SalesWriterListners;
-import com.example.demo.processor.Saleprocessor;
+import com.example.demo.processor.SaleProcessor;
 
 /**
  * @author Naveen Wodeyar
@@ -49,7 +49,7 @@ public class EportSalesJobConfig {
 	private PlatformTransactionManager platformTransactionManager;
 	
 	@Autowired
-	private Saleprocessor saleprocessor;
+	private SaleProcessor saleprocessor;
 	
 	@Autowired
 	private SalesWriterListners salesWriterListners;

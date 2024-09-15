@@ -32,7 +32,7 @@ public class SalesWriterListners implements ItemWriteListener<SalesDTO> {
 
 		List<Long> list = items.getItems()
 		.stream()
-		.map(SalesDTO::sale_id)
+		.map(sale->sale.getSale_id())
 		.toList();
 		
 		String sql = "UPDATE sales SET processed = true WHERE sale_id IN (:idS)";
