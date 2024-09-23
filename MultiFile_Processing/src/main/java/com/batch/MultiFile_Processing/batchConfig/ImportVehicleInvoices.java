@@ -97,7 +97,5 @@ public class ImportVehicleInvoices {
 	@Bean
 	public VirtualThreadTaskExecutor taskExecutor() {
 		return new VirtualThreadTaskExecutor("Custom-Thread-");
-		
 	}
-	
 }
