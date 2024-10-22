@@ -2,6 +2,8 @@ package com.example.demo.config;
 
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -33,11 +35,13 @@ import com.example.demo.processor.SaleProcessor;
  */
 @Configuration
 @EnableBatchProcessing
-public class EportSalesJobConfig {
+public class ExportSalesJobConfig {
+	
+	private static final Logger log = LoggerFactory.getLogger(ExportSalesJobConfig.class);
 	
 	private final DataSource dataSource;
 
-	public EportSalesJobConfig(DataSource dataSource) {
+	public ExportSalesJobConfig(DataSource dataSource) {
 		super();
 		this.dataSource = dataSource;
 	}
@@ -57,6 +61,7 @@ public class EportSalesJobConfig {
 	@Bean
 	public JdbcCursorItemReader<SalesDTO> salesJdbcCursorItemReader(){
 		String sql = "SELECT sale_id, product_id, customer_id, sale_date, sale_amount, store_location, country FROM sales WHERE processed=false";
+		log.info("JdbcCursorItemReader");
 		return new JdbcCursorItemReaderBuilder<SalesDTO>()
 				.name("sales reader")
 				.dataSource(dataSource)
@@ -64,12 +69,12 @@ public class EportSalesJobConfig {
 				.fetchSize(50)
 				.rowMapper(new DataClassRowMapper<SalesDTO>())
 				.build();
-	
 	}
 	
 	@Bean
 	@StepScope
 	public FlatFileItemWriter<SalesDTO> flatFileItemWriter(@Value("#{jobParameters['output.file.name']}")String outPutFile){
+		log.info("FlatFileItemWriter");
 		return new FlatFileItemWriterBuilder<SalesDTO>()
 				.name("sales file writer")
 				.resource(new FileSystemResource(outPutFile))
@@ -86,6 +91,7 @@ public class EportSalesJobConfig {
 	
 	@Bean
 	public Step step(FlatFileItemWriter<SalesDTO> flatFileItemWriter) {
+		log.info("Step");
 		return new StepBuilder("from DB to File",jobRepository)
 				.<SalesDTO,SalesDTO>chunk(10,platformTransactionManager)
 				.reader(salesJdbcCursorItemReader())
@@ -98,6 +104,7 @@ public class EportSalesJobConfig {
 	
 	@Bean
 	public Job job(Step step) {
+		log.info("Job");
 		return new JobBuilder("dbToFileJob",jobRepository)
 				.incrementer(new RunIdIncrementer())
 				.start(step)
