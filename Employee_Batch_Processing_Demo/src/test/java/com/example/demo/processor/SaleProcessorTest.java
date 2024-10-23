@@ -18,10 +18,13 @@ import com.example.demo.dto.SalesDTO;
 public class SaleProcessorTest {
 
     private SaleProcessor saleProcessor;
+    private Logger logger;
 
     @BeforeEach
     public void setUp() {
-        saleProcessor = new SaleProcessor();
+        logger = mock(Logger.class);
+        saleProcessor = new SaleProcessor(logger);
+
     }
 
     @Test
@@ -29,13 +32,14 @@ public class SaleProcessorTest {
         // Given
         SalesDTO salesDTO = new SalesDTO();
         // Set properties for salesDTO as needed
-        salesDTO.setSomeProperty("Test Value");
+
 
         // When
         SalesDTO processedItem = saleProcessor.process(salesDTO);
 
         // Then
         assertNotNull(processedItem);
-        assertEquals("Test Value", processedItem.getSomeProperty()); 
+        verify(logger).info("Processing the item {}", salesDTO);
+
     }
 }

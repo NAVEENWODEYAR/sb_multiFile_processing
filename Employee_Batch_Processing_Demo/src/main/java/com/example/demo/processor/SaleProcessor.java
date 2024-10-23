@@ -16,6 +16,13 @@ public class SaleProcessor implements ItemProcessor<SalesDTO, SalesDTO> {
 
 	private static final Logger log = LoggerFactory.getLogger(SaleProcessor.class);
 
+	/**
+	 * @param logger
+	 */
+	public SaleProcessor(Logger logger) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public SalesDTO process(SalesDTO item) throws Exception {
 		log.info("Processing the item {}",item);
