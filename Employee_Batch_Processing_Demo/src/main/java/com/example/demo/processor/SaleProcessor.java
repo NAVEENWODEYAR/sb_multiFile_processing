@@ -16,11 +16,7 @@ public class SaleProcessor implements ItemProcessor<SalesDTO, SalesDTO> {
 
 	private static final Logger log = LoggerFactory.getLogger(SaleProcessor.class);
 
-	/**
-	 * @param logger
-	 */
 	public SaleProcessor(Logger logger) {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

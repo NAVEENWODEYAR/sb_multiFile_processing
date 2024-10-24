@@ -11,10 +11,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -24,6 +27,8 @@ import org.springframework.core.env.Environment;
 
 @WebMvcTest(BatchController.class)
 public class BatchControllerTest {
+	
+	private static final Logger log = LoggerFactory.getLogger(BatchControllerTest.class);
 
     private MockMvc mockMvc;
 
@@ -43,13 +48,16 @@ public class BatchControllerTest {
     }
 
     @Test
+    @DisplayName(value = "TestConnection test")
     public void testConnection() throws Exception {
-        mockMvc.perform(get("/api/batch"))
+    	log.info("inside test connection test");     
+    			mockMvc.perform(get("/api/batch"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Batch_Processing_App_connected,,"));
     }
 
     @Test
+    @DisplayName(value = "get port unit test")
     public void getPort() throws Exception {
         when(environment.getProperty("server.port")).thenReturn("8080");
 
