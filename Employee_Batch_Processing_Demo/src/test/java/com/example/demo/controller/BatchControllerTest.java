@@ -1,10 +1,5 @@
 package com.example.demo.controller;
 import static org.hamcrest.CoreMatchers.containsString;
-/**
- * @author Naveen Wodeyar
- * @date 23-Oct-2024
- * @time 1:50:01 pm
- */
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -24,7 +19,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.core.env.Environment;
-
+/**
+ * @author Naveen Wodeyar
+ * @date 23-Oct-2024
+ * @time 1:50:01 pm
+ */
 @WebMvcTest(BatchController.class)
 public class BatchControllerTest {
 	
@@ -50,7 +49,7 @@ public class BatchControllerTest {
     @Test
     @DisplayName(value = "TestConnection test")
     public void testConnection() throws Exception {
-    	log.info("inside test connection test");     
+    			log.info("inside test connection test");     
     			mockMvc.perform(get("/api/batch"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Batch_Processing_App_connected,,"));
@@ -59,8 +58,8 @@ public class BatchControllerTest {
     @Test
     @DisplayName(value = "get port unit test")
     public void getPort() throws Exception {
+    	log.info(applicationName);
         when(environment.getProperty("server.port")).thenReturn("8080");
-
         mockMvc.perform(get("/api/batch/port")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

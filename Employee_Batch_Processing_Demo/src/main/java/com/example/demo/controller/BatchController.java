@@ -21,14 +21,14 @@ public class BatchController {
 	
 	private static final Logger log = LoggerFactory.getLogger(BatchController.class);
 	
-	  @Value("${spring.application.name}")
-	    private String applicationName;
+	@Value("${spring.application.name}")
+    private String applicationName;
 
-	    private final Environment environment;
+    private final Environment environment;
 
-	    public BatchController(Environment environment) {
-	        this.environment = environment;
-	    }
+    public BatchController(Environment environment) {
+        this.environment = environment;
+    }
 	    
 	@GetMapping
 	public String testConnection() {
