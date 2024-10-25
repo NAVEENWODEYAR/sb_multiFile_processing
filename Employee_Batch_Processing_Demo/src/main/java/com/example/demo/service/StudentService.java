@@ -16,5 +16,7 @@ public interface StudentService {
 	
 	void save(StudentEntity studentEntity);
 	List<StudentEntity> getStudents();
+	StudentEntity getStudentById(Long stId);
+	
 
 }

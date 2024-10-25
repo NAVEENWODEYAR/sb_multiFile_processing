@@ -4,16 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.example.demo.entity.StudentEntity;
 import com.example.demo.service.StudentService;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 /**
  * @author Naveen Wodeyar
@@ -27,7 +20,12 @@ public class StudentEntityController {
 	@Autowired
 	private StudentService studentService;
 	
-	@PostMapping
+	@GetMapping
+	public String testConnection() {
+		return "CONNECTED!,";
+	}
+	
+	@PostMapping("/add")
 	public void addStudent(@RequestBody @Validated StudentEntity request) {
 		try {
 			studentService.save(request);
