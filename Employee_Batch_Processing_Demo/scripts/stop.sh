@@ -18,7 +18,7 @@ stop_application() {
             echo "Process with PID $PID is not running."
         fi
     else
-        echo "PID file does not exist. Application may not be running."
+        echo "PID file does not exist,Application may not be running."
     fi
 }
 

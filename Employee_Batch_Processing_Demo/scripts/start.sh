@@ -14,4 +14,4 @@ nohup java -jar "$JAR_PATH" --spring.profiles.active="$PROFILE" > /projects/app.
 echo $! > /projects/pid.file
 
 # Print a message indicating the application has started
-echo "Java application started with PID: $(cat /projects/pid.file)"
+echo "Java application started with ProcessID: $(cat /projects/pid.file)"
