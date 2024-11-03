@@ -38,7 +38,7 @@ public class BatchController {
 	
 	@GetMapping("/port")
     public String getPort() {
-        Properties port = environment.getProperties();
+        Properties port = Environment.getProperties();
         log.info("inside getPort() - Port: {}, Application Name: {}", port, applicationName);
         return String.format("Batch_Processing_App_connected,, Port: %s, Application Name: %s", port, applicationName);
     }

@@ -23,7 +23,7 @@ public class SaleProcessorTest {
     @BeforeEach
     public void setUp() {
         logger = mock(Logger.class);
-        saleProcessor = new SaleProcessor(logger);
+//        saleProcessor = new SaleProcessor(logger);
 
     }
 

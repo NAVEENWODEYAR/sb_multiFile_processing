@@ -14,10 +14,11 @@ import com.example.demo.dto.SalesDTO;
 @Component
 public class SaleProcessor implements ItemProcessor<SalesDTO, SalesDTO> {
 
-	private static final Logger log = LoggerFactory.getLogger(SaleProcessor.class);
+	private static Logger log = LoggerFactory.getLogger(SaleProcessor.class);
 
-	public SaleProcessor(Logger logger) {
-	}
+//	public SaleProcessor(Logger logger) {
+//		this.log = logger;
+//	}
 
 	@Override
 	public SalesDTO process(SalesDTO item) throws Exception {
