@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableRetry
 @EnableCaching
-@EnableJpaRepositories
+//@EnableJpaRepositories
 @SpringBootApplication
 @EnableScheduling
 public class EmployeeBatchProcessingDemoApplication {
