@@ -7,3 +7,6 @@ java -jar target/myapp-0.0.1-SNAPSHOT.jar
 java -jar target/your-application-name.jar --spring.profiles.active=dev
 
 java -jar target/your-application-name.jar --server.port=8081
+
+# Run the JAR file with the Spring profile and server port as environment variables
+docker run -e SPRING_PROFILES_ACTIVE=dev -p 8080:8080 your-image-name
