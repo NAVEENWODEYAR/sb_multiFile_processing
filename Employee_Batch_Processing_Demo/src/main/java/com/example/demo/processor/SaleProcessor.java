@@ -3,7 +3,6 @@ package com.example.demo.processor;
 import org.slf4j.*;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
-
 import com.example.demo.dto.SalesDTO;
 
 /**
@@ -20,7 +19,5 @@ public class SaleProcessor implements ItemProcessor<SalesDTO, SalesDTO> {
 	public SalesDTO process(SalesDTO item) throws Exception {
 		log.info("Processing the item {}",item);
 		return item;
-	}
-	
-	
+	}	
 }

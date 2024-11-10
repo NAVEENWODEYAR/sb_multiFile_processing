@@ -47,7 +47,7 @@ public class BatchControllerTest {
     }
 
     @Test
-    @DisplayName(value = "TestConnection test")
+    @DisplayName(value = "testConnection(), test")
     public void testConnection() throws Exception {
     			log.info("inside test connection test");     
     			mockMvc.perform(get("/api/batch"))
@@ -56,7 +56,7 @@ public class BatchControllerTest {
     }
 
     @Test
-    @DisplayName(value = "get port unit test")
+    @DisplayName(value = "getport(), unit test")
     public void getPort() throws Exception {
     	log.info(applicationName);
         when(environment.getProperty("server.port")).thenReturn("8080");

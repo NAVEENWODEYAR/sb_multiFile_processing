@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
  * @time 1:31:32 am
  */
 @Entity
-@Table(name = "student")
+@Table(name = "student_table")
 public class StudentEntity {
 
     @Id
@@ -83,7 +83,6 @@ public class StudentEntity {
         return id != null && id.equals(student.id);
     }
 
-    // toString
     @Override
     public String toString() {
         return "Student{" +

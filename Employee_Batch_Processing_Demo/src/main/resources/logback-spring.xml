@@ -41,7 +41,7 @@
 
     <!-- Optionally, configure the root logger to log to the console as well -->
     <root level="INFO">
-        <appender-ref ref="FILE" />
+        <appender-ref ref="FILE"/>
         <appender-ref ref="CONSOLE" />
     </root>
 </configuration>
