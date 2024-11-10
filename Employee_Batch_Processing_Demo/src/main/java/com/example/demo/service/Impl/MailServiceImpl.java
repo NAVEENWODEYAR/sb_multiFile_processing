@@ -1,12 +1,9 @@
 package com.example.demo.service.Impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-
 import com.example.demo.service.MailService;
-
 /**
  * @author Naveen Wodeyar
  * @date 08-Nov-2024
@@ -21,7 +18,6 @@ public class MailServiceImpl implements MailService{
 
 	@Override
 	public String sendMail() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

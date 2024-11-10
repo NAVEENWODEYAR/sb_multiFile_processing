@@ -16,10 +16,6 @@ public class SaleProcessor implements ItemProcessor<SalesDTO, SalesDTO> {
 
 	private static Logger log = LoggerFactory.getLogger(SaleProcessor.class);
 
-//	public SaleProcessor(Logger logger) {
-//		this.log = logger;
-//	}
-
 	@Override
 	public SalesDTO process(SalesDTO item) throws Exception {
 		log.info("Processing the item {}",item);

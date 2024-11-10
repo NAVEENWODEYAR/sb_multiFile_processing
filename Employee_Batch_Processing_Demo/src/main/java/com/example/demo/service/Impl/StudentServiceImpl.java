@@ -45,7 +45,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public StudentEntity getStudentById(Long stId) {
 		try {
-			log.info("FETCH BY ID");
+			log.info("FETCH BY_ID");
 			Optional<StudentEntity> student = studentRepo.findById(stId);
 			return student.get();
 		} catch (Exception e) {
