@@ -10,10 +10,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class SQLLoggingInterceptor extends EmptyStatementInspector {
 
-	  @Override
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	    public String inspect(String sql) {
 	        // Log the SQL query
 	        System.out.println("Executing SQL: " + sql);
-	        return sql; // Return the SQL unchanged
+	        return sql; 
 	    }
 }
