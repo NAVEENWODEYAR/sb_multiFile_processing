@@ -1,0 +1,18 @@
+
+# 1. Cluster and Resource Info
+kubectl cluster-info
+kubectl get namespaces
+kubectl get deployments
+kubectl get pods
+kubectl describe deployment <deployment-name>
+kubectl describe pod <pod-name>
+
+# 2. Logs
+kubectl logs <pod-name>
+kubectl logs -f <pod-name>
+kubectl logs <pod-name> -c <container-name>
+kubectl logs <pod-name> --previous
+kubectl logs -l app=<app-name> --follow
+
+# 3. Resource Usage Monitoring
+kubectl top

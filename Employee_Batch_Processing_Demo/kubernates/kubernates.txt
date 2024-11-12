@@ -1,0 +1,58 @@
+
+1. Verify kubectl is connected to the Kubernetes cluster:
+	kubectl cluster-info
+	
+2. Apply the deployment.yml file to create the Deployment and Service:
+	kubectl apply -f deployment.yml
+	
+3. Check the status of the pods to ensure they are running:
+	kubectl get pods
+	
+4. Check the status of the services:
+	kubectl get services
+
+5.Wait for the EXTERNAL-IP to be assigned (if using LoadBalancer type service):
+	kubectl get svc springboot-app-service
+
+6. Access the Spring Boot application:
+	kubectl get svc springboot-app-service(If using LoadBalancer (external access))
+	kubectl port-forward svc/springboot-app-service 8080:80(If using ClusterIP (internal access only), use kubectl port-forward)
+	
+7.Check the logs for troubleshooting (replace <pod-name> with your actual pod name):
+	kubectl logs <pod-name>
+	
+8. Scale the deployment (adjust the number of replicas):
+	kubectl scale deployment springboot-app-deployment --replicas=5
+	
+9. Delete the deployment and associated resources:
+	kubectl delete -f deployment.yml
+
+
+
+
+
+Summary of Commands for Quick Reference
+
+# Step 1: Build and Push Docker Image
+mvn clean package
+docker build -t your-docker-repo/springboot-app:latest .
+docker push your-docker-repo/springboot-app:latest
+
+# Step 2: Apply Deployment YAML
+kubectl cluster-info
+kubectl apply -f deployment.yml
+kubectl get pods
+kubectl get services
+
+# Step 3: Wait for EXTERNAL-IP (LoadBalancer) or use port-forwarding (ClusterIP)
+kubectl get svc springboot-app-service
+kubectl port-forward svc/springboot-app-service 8080:80
+
+# Step 4: Check logs and Troubleshoot
+kubectl logs <pod-name>
+
+# Step 5: Scaling the Deployment
+kubectl scale deployment springboot-app-deployment --replicas=5
+
+# Step 6: Delete the Deployment
+kubectl delete -f deployment.yml
