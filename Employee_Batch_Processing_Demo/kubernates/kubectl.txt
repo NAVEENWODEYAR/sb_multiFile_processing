@@ -1,18 +1,190 @@
-
-# 1. Cluster and Resource Info
-kubectl cluster-info
-kubectl get namespaces
-kubectl get deployments
-kubectl get pods
-kubectl describe deployment <deployment-name>
-kubectl describe pod <pod-name>
-
-# 2. Logs
-kubectl logs <pod-name>
-kubectl logs -f <pod-name>
-kubectl logs <pod-name> -c <container-name>
-kubectl logs <pod-name> --previous
-kubectl logs -l app=<app-name> --follow
-
-# 3. Resource Usage Monitoring
-kubectl top
+{
+  "cluster_and_resource_info": [
+    {
+      "command": "kubectl cluster-info",
+      "explanation": "Displays information about the Kubernetes cluster.",
+      "example": "kubectl cluster-info"
+    },
+    {
+      "command": "kubectl get namespaces",
+      "explanation": "Lists all available namespaces in the cluster.",
+      "example": "kubectl get namespaces"
+    },
+    {
+      "command": "kubectl get deployments",
+      "explanation": "Displays all deployments in the current namespace.",
+      "example": "kubectl get deployments"
+    },
+    {
+      "command": "kubectl get pods",
+      "explanation": "Lists all pods in the current namespace.",
+      "example": "kubectl get pods"
+    },
+    {
+      "command": "kubectl describe deployment <deployment-name>",
+      "explanation": "Provides detailed information about a specific deployment.",
+      "example": "kubectl describe deployment springboot-app"
+    },
+    {
+      "command": "kubectl describe pod <pod-name>",
+      "explanation": "Provides detailed information about a specific pod.",
+      "example": "kubectl describe pod springboot-app-deployment-xxx-abc1"
+    }
+  ],
+  "logs": [
+    {
+      "command": "kubectl logs <pod-name>",
+      "explanation": "Fetches the logs for a specific pod.",
+      "example": "kubectl logs springboot-app-deployment-xxx-abc1"
+    },
+    {
+      "command": "kubectl logs -f <pod-name>",
+      "explanation": "Follows the logs of a pod in real-time.",
+      "example": "kubectl logs -f springboot-app-deployment-xxx-abc1"
+    },
+    {
+      "command": "kubectl logs <pod-name> -c <container-name>",
+      "explanation": "Fetches logs from a specific container within the pod.",
+      "example": "kubectl logs springboot-app-deployment-xxx-abc1 -c springboot-app"
+    },
+    {
+      "command": "kubectl logs <pod-name> --previous",
+      "explanation": "Shows logs of a previously terminated container in the pod.",
+      "example": "kubectl logs springboot-app-deployment-xxx-abc1 --previous"
+    },
+    {
+      "command": "kubectl logs -l app=<app-name> --follow",
+      "explanation": "Streams logs of all pods with a specific label in real-time.",
+      "example": "kubectl logs -l app=springboot-app --follow"
+    }
+  ],
+  "resource_usage_monitoring": [
+    {
+      "command": "kubectl top pods",
+      "explanation": "Displays resource usage (CPU and memory) for all pods in the current namespace.",
+      "example": "kubectl top pods"
+    },
+    {
+      "command": "kubectl top nodes",
+      "explanation": "Displays resource usage (CPU and memory) for all nodes in the cluster.",
+      "example": "kubectl top nodes"
+    },
+    {
+      "command": "kubectl top pod <pod-name>",
+      "explanation": "Displays resource usage for a specific pod.",
+      "example": "kubectl top pod springboot-app-deployment-xxx-abc1"
+    }
+  ],
+  "pod_management_and_scaling": [
+    {
+      "command": "kubectl scale deployment <deployment-name> --replicas=3",
+      "explanation": "Scales the number of replicas (pods) for a deployment.",
+      "example": "kubectl scale deployment springboot-app --replicas=5"
+    },
+    {
+      "command": "kubectl delete pod <pod-name>",
+      "explanation": "Deletes a pod. Kubernetes will automatically recreate it if part of a deployment.",
+      "example": "kubectl delete pod springboot-app-deployment-xxx-abc1"
+    },
+    {
+      "command": "kubectl exec -it <pod-name> -- /bin/bash",
+      "explanation": "Opens a shell session inside a running pod for troubleshooting.",
+      "example": "kubectl exec -it springboot-app-deployment-xxx-abc1 -- /bin/bash"
+    }
+  ],
+  "deployment_rollback_and_status": [
+    {
+      "command": "kubectl rollout undo deployment <deployment-name>",
+      "explanation": "Rolls back a deployment to the previous version.",
+      "example": "kubectl rollout undo deployment springboot-app"
+    },
+    {
+      "command": "kubectl rollout status deployment <deployment-name>",
+      "explanation": "Checks the rollout status of a deployment.",
+      "example": "kubectl rollout status deployment springboot-app"
+    }
+  ],
+  "exposing_and_debugging_services": [
+    {
+      "command": "kubectl port-forward svc/<service-name> 8080:80",
+      "explanation": "Forwards a local port to a port on a service within the cluster.",
+      "example": "kubectl port-forward svc/springboot-app-service 8080:80"
+    },
+    {
+      "command": "kubectl describe svc <service-name>",
+      "explanation": "Describes a service and its details (e.g., selector, endpoints, ports).",
+      "example": "kubectl describe svc springboot-app-service"
+    }
+  ],
+  "additional_useful_commands": [
+    {
+      "command": "kubectl get events",
+      "explanation": "Lists all events in the current namespace. Useful for troubleshooting issues.",
+      "example": "kubectl get events --sort-by='.metadata.creationTimestamp'"
+    },
+    {
+      "command": "kubectl get all",
+      "explanation": "Lists all resources (pods, deployments, services, etc.) in the current namespace.",
+      "example": "kubectl get all"
+    },
+    {
+      "command": "kubectl get pods -l app=<app-name>",
+      "explanation": "Lists pods with a specific label, useful for filtering related pods.",
+      "example": "kubectl get pods -l app=springboot-app"
+    },
+    {
+      "command": "kubectl describe node <node-name>",
+      "explanation": "Displays detailed information about a specific node in the cluster.",
+      "example": "kubectl describe node node-1"
+    },
+    {
+      "command": "kubectl get services",
+      "explanation": "Lists all services in the current namespace.",
+      "example": "kubectl get services"
+    },
+    {
+      "command": "kubectl delete deployment <deployment-name>",
+      "explanation": "Deletes a deployment and its associated pods.",
+      "example": "kubectl delete deployment springboot-app"
+    },
+    {
+      "command": "kubectl describe pod <pod-name> --namespace=<namespace>",
+      "explanation": "Describes a pod in a specific namespace.",
+      "example": "kubectl describe pod springboot-app-deployment-xxx-abc1 --namespace=my-app-namespace"
+    }
+  ],
+  "useful_aliases": [
+    {
+      "alias": "k",
+      "command": "kubectl"
+    },
+    {
+      "alias": "kgp",
+      "command": "kubectl get pods"
+    },
+    {
+      "alias": "kgd",
+      "command": "kubectl get deployments"
+    },
+    {
+      "alias": "kgs",
+      "command": "kubectl get services"
+    },
+    {
+      "alias": "kga",
+      "command": "kubectl get all"
+    },
+    {
+      "alias": "klogs",
+      "command": "kubectl logs -f"
+    },
+    {
+      "alias": "kdesc",
+      "command": "kubectl describe"
+    },
+    {
+      "alias": "ktop",
+      "command": "kubectl top"
+    }
+  ]
+}
