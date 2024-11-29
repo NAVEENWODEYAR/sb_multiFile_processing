@@ -10,9 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class SQLLoggingInterceptor extends EmptyStatementInspector {
 
-	  /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override

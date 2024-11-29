@@ -42,8 +42,6 @@ public class SalesWriterListners implements ItemWriteListener<SalesDTO> {
 		int update = namedParameterJdbcTemplate.update(sql,mapSqlParameterSource);
 		
 		log.info("Total rows exported {}",update);
-	
 	}
-
 	
 }

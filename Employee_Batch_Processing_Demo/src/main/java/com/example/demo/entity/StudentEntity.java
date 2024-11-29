@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 /**
  * @author Naveen Wodeyar
  * @date 25-Oct-2024
@@ -14,10 +16,16 @@ public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotNull(message = "City can't be empty")
+	@Size(min = 4,max = 50,message = "Should be between 2-50 characters")
     private String name;
     
+    @NotNull(message = "City can't be empty")
+	@Size(min = 4,max = 50,message = "Should be between 2-50 characters")
     private int age;
     
+    @NotNull(message = "City can't be empty")
+	@Size(min = 4,max = 50,message = "Should be between 2-50 characters")
     private String email;
 
     public StudentEntity() {
