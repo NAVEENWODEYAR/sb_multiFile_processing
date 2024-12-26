@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import java.time.LocalDateTime;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,14 +12,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 @EnableRetry
 @EnableCaching
-//@EnableJpaRepositories
+@EnableJpaRepositories
 @SpringBootApplication
 @EnableScheduling
 public class EmployeeBatchProcessingDemoApplication {
 
+	private static final Logger log = LoggerFactory.getLogger(EmployeeBatchProcessingDemoApplication.class);
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeBatchProcessingDemoApplication.class, args);
 	}
@@ -29,5 +36,11 @@ public class EmployeeBatchProcessingDemoApplication {
             System.out.println("\n#############################\n");
         };
     }
+	
+	@Scheduled(cron = "0 0/5 * * * ?")
+	public void cronJob() {
+		System.out.println("SERVER: RUNNING");
+		log.info("SERVER_STATUS: {}",LocalDateTime.now());
+	}
 
 }
