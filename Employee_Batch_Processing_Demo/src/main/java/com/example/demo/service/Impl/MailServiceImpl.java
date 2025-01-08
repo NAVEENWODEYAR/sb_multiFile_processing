@@ -20,6 +20,7 @@ public class MailServiceImpl implements MailService{
 
 	@Override
 	public String sendMail() {
+		log.info("send mail()");
 		return null;
 	}
 }
