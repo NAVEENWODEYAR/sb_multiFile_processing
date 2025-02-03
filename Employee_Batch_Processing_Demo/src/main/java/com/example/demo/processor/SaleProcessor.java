@@ -10,6 +10,7 @@ import com.example.demo.dto.SalesDTO;
  * @date 14-Sept-2024
  * @time 10:48:58 am
  */
+
 @Component
 public class SaleProcessor implements ItemProcessor<SalesDTO, SalesDTO> {
 
