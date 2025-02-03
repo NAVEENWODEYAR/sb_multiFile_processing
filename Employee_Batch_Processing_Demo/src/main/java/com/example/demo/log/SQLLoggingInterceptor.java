@@ -1,11 +1,13 @@
 package com.example.demo.log;
+
+import org.hibernate.resource.jdbc.internal.EmptyStatementInspector;
+import org.springframework.stereotype.Component;
+
 /**
  * @author Naveen Wodeyar
  * @date 25-Oct-2024
  * @time 1:20:15 am
  */
-import org.hibernate.resource.jdbc.internal.EmptyStatementInspector;
-import org.springframework.stereotype.Component;
 
 @Component
 public class SQLLoggingInterceptor extends EmptyStatementInspector {

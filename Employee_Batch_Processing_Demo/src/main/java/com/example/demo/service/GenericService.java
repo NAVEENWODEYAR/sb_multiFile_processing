@@ -1,12 +1,13 @@
 package com.example.demo.service;
+
+import java.util.*;
+import org.springframework.stereotype.Service;
+
 /**
  * @author Naveen Wodeyar
  * @date 25-Oct-2024
  * @time 10:51:44 pm
  */
-import java.util.*;
-import org.springframework.stereotype.Service;
-
 
 @Service
 public interface GenericService<T, ID> {
