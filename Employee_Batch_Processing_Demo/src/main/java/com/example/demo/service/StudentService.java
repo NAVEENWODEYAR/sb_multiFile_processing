@@ -9,6 +9,7 @@ import com.example.demo.entity.StudentEntity;
  * @date 25-Oct-2024
  * @time 1:37:02 am
  */
+
 @Service
 public interface StudentService {
 	
