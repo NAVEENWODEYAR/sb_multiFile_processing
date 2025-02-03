@@ -1,7 +1,6 @@
 package com.example.demo.config;
 
 import javax.sql.DataSource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
@@ -33,6 +32,7 @@ import com.example.demo.processor.SaleProcessor;
  * @date 14-Sept-2024
  * @time 10:35:17 am
  */
+
 @Configuration
 @EnableBatchProcessing
 public class ExportSalesJobConfig {

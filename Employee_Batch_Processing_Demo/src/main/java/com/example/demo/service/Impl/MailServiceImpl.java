@@ -3,12 +3,16 @@ package com.example.demo.service.Impl;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
 import com.example.demo.service.MailService;
+
 /**
  * @author Naveen Wodeyar
  * @date 08-Nov-2024
  * @time 10:05:54 pm
  */
+
+@Service
 public class MailServiceImpl implements MailService{
 
 	private static final long serialVersionUID = 1L;
