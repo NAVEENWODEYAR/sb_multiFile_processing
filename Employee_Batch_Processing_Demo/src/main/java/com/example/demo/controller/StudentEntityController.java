@@ -13,6 +13,7 @@ import com.example.demo.service.StudentService;
  * @date 25-Oct-2024
  * @time 1:43:17 am
  */
+
 @RestController
 @RequestMapping("/api/student")
 public class StudentEntityController {

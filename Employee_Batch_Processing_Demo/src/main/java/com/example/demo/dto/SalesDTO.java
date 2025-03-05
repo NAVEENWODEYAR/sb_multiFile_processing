@@ -8,6 +8,7 @@ import java.util.Objects;
  * @date 14-Sept-2024
  * @time 10:42:44 am
  */
+
 public class SalesDTO{
 	
 			private Long sale_id;

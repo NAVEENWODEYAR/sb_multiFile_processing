@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
  * @date 22-Oct-2024
  * @time 11:52:08 pm
  */
+
 @RestController
 @RequestMapping("/api/batch")
 public class BatchController {

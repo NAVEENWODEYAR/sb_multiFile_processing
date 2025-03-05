@@ -3,11 +3,13 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
 /**
  * @author Naveen Wodeyar
  * @date 25-Oct-2024
  * @time 1:31:32 am
  */
+
 @Entity
 @Table(name = "student_table")
 public class StudentEntity {
