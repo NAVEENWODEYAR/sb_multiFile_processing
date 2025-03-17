@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -23,6 +24,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableJpaRepositories
 @SpringBootApplication
 @EnableScheduling
+@EntityScan(basePackages = "com.example.demo") 
 public class EmployeeBatchProcessingDemoApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(EmployeeBatchProcessingDemoApplication.class);

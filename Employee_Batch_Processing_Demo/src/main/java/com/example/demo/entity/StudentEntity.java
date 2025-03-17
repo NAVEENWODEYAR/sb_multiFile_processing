@@ -16,7 +16,7 @@ public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     
     @NotNull(message = "City can't be empty")
 	@Size(min = 4,max = 50,message = "Should be between 2-50 characters")
@@ -41,11 +41,11 @@ public class StudentEntity {
     }
 
     // Getters and Setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

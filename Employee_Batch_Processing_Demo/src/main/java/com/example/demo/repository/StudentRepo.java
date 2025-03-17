@@ -11,6 +11,6 @@ import com.example.demo.entity.StudentEntity;
  */
 
 @Repository
-public interface StudentRepo extends JpaRepository<StudentEntity, Long> {
+public interface StudentRepo extends JpaRepository<StudentEntity, Integer> {
 
 }
