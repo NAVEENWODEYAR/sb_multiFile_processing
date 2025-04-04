@@ -3,6 +3,7 @@ package com.example.demo.service.Impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.JDBCException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
 
 	// Add @Transactional to the save method to ensure the operation happens within a transaction
 	@Override
-	@Transactional(rollbackFor = Exception.class)
+	@Transactional(rollbackFor = JDBCException.class)
 	public void save(StudentEntity studentEntity) {
 		try {
 			log.info("SAVE");
