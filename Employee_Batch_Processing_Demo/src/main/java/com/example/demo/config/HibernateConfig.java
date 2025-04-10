@@ -1,15 +1,18 @@
 package com.example.demo.config;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.springframework.context.annotation.*;
+
+import com.example.demo.log.SQLLoggingInterceptor;
+
+
 /**
  * @author Naveen Wodeyar
  * @date 25-Oct-2024
  * @time 1:24:31 am
  */
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.springframework.context.annotation.Bean;
-
-import com.example.demo.log.SQLLoggingInterceptor;
 
 @org.springframework.context.annotation.Configuration
 public class HibernateConfig {

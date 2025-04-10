@@ -39,6 +39,7 @@ public class EmployeeBatchProcessingDemoApplication {
             String javaVersion = System.getProperty("java.version");
             System.out.println("\n#############################\n");
             System.out.println("JAVA VERSION: " + javaVersion);
+            log.info("JAVA VERSION:{} ",javaVersion);
             System.out.println("\n#############################\n");
         };
     }
