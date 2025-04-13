@@ -29,7 +29,7 @@ public class JobScheduler {
 	@Autowired
 	private Job job;
 	
-	@Scheduled(cron = "0/30 * * * * *")
+	@Scheduled(cron = "*/5 * * * * *")
 	void triggerJob() {
 		String fileName = LocalDate.now().toString().concat("_sales.csv");
 		JobParameters jobParametersBuilder = new JobParametersBuilder()
