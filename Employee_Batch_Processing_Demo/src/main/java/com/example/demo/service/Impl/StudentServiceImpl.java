@@ -49,8 +49,8 @@ public class StudentServiceImpl implements StudentService {
 		long timeTaken = endTime - startTime; // Time in nanoseconds
 		long memoryUsed = endMemory - startMemory; // Memory in bytes
 
-		log.info("Time taken for save: " + timeTaken + " ns");
-		log.info("Memory used for save: " + memoryUsed + " bytes");
+		log.info("Time taken for save operation: " + timeTaken + " ns");
+		log.info("Memory used for save operation: " + memoryUsed + " bytes");
 	}
 
 	// Add @Transactional to the method to ensure the database read operation is wrapped in a transaction
@@ -65,7 +65,7 @@ public class StudentServiceImpl implements StudentService {
 			List<StudentEntity> studentList = studentRepo.findAll();
 			return studentList;
 		} catch (Exception e) {
-			log.error("Error fetching students: " + e.getMessage());
+			log.error("Error fetching student records " + e.getMessage());
 			throw e;
 		} finally {
 			long endTime = System.nanoTime();
@@ -74,8 +74,8 @@ public class StudentServiceImpl implements StudentService {
 			long timeTaken = endTime - startTime;
 			long memoryUsed = endMemory - startMemory;
 
-			log.info("Time taken for fetching students: " + timeTaken + " ns");
-			log.info("Memory used for fetching students: " + memoryUsed + " bytes");
+			log.info("Time taken for fetching students records: " + timeTaken + " ns");
+			log.info("Memory used for fetching students records: " + memoryUsed + " bytes");
 		}
 	}
 
@@ -89,9 +89,9 @@ public class StudentServiceImpl implements StudentService {
 		try {
 			log.info("FETCH BY_ID");
 			Optional<StudentEntity> student = studentRepo.findById(stId);
-			return student.orElseThrow(() -> new RuntimeException("Student not found with id: " + stId));
+			return student.orElseThrow(() -> new RuntimeException("Student record not found with id: " + stId));
 		} catch (Exception e) {
-			log.error("Error fetching student by ID: " + e.getMessage());
+			log.error("Error fetching student records by ID: " + e.getMessage());
 			throw e;
 		} finally {
 			long endTime = System.nanoTime();
@@ -100,8 +100,8 @@ public class StudentServiceImpl implements StudentService {
 			long timeTaken = endTime - startTime;
 			long memoryUsed = endMemory - startMemory;
 
-			log.info("Time taken for fetching student by ID: " + timeTaken + " ns");
-			log.info("Memory used for fetching student by ID: " + memoryUsed + " bytes");
+			log.info("Time taken for fetching student records by ID: " + timeTaken + " ns");
+			log.info("Memory used for fetching student records by ID: " + memoryUsed + " bytes");
 		}
 	}
 }
